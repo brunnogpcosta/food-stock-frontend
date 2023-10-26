@@ -1,0 +1,159 @@
+<div class="section-table">
+	<ul ngbNav #nav="ngbNav" class="nav-tabs">
+	  <li ngbNavItem>
+		<button ngbNavLink>Items</button>
+  
+		<ng-template ngbNavContent>
+	
+			<input
+			  class="form-control mb-4 mt-4"
+			  matInput
+			  (keyup)=" applyItemsFilter($event)"
+			  placeholder="Filtrar por nome ou quantidade"
+			/>
+	
+			<div class="mat-table-container" style="overflow-x: auto;">
+				<table mat-table [dataSource]="dataSource" #itemsSort matSort class="mb-4">
+					<ng-container matColumnDef="code">
+					<th mat-header-cell *matHeaderCellDef>Código</th>
+					<td mat-cell *matCellDef="let row">{{ row.code }}</td>
+					</ng-container>
+		
+					<ng-container matColumnDef="name">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+					<td mat-cell *matCellDef="let row">{{ row.name }}</td>
+					</ng-container>
+		
+					<ng-container matColumnDef="unit">
+					<th mat-header-cell *matHeaderCellDef>Unidade</th>
+					<td mat-cell *matCellDef="let row">{{ row.unit }}</td>
+					</ng-container>
+		
+					<ng-container matColumnDef="qtd">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>
+						Quantidade
+					</th>
+					<td mat-cell *matCellDef="let row">{{ row.qtd }}</td>
+					</ng-container>
+		
+					<ng-container matColumnDef="validity">
+					<th mat-header-cell *matHeaderCellDef>Validade</th>
+					<td mat-cell *matCellDef="let row">{{ row.validity }}</td>
+					</ng-container>
+		
+					<ng-container matColumnDef="input">
+					<th mat-header-cell *matHeaderCellDef>Entrada</th>
+					<td mat-cell *matCellDef="let row">{{ row.input }}</td>
+					</ng-container>
+		
+					<ng-container matColumnDef="output">
+					<th mat-header-cell *matHeaderCellDef>Saída</th>
+					<td mat-cell *matCellDef="let row">{{ row.output }}</td>
+					</ng-container>
+		
+					<ng-container matColumnDef="createdAt">
+					<th mat-header-cell *matHeaderCellDef>
+						Data de Criação
+					</th>
+					<td mat-cell *matCellDef="let row">{{ row.createdAt }}</td>
+					</ng-container>
+		
+					<ng-container matColumnDef="actions">
+						<th mat-header-cell *matHeaderCellDef>
+						Ação
+						</th>
+						<td mat-cell *matCellDef="let row">
+						<button class="btn btn-danger d-flex border-black" matTooltip="Tooltip Text" aria-label="Ação" (click)="onActionClick(row)">
+							<mat-icon>arrow_right_alt</mat-icon>
+						</button>
+						</td>
+					</ng-container>
+					
+
+					<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+					<tr
+					mat-row
+					*matRowDef="let row; columns: displayedColumns"
+					(click)="onRowClick(row)"
+					></tr>
+				</table>
+		  	</div>
+
+		  <mat-paginator
+			[pageSizeOptions]="[5, 10, 25]"
+			showFirstLastButtons
+			#itemsPaginator
+		  ></mat-paginator>
+		</ng-template>
+	  </li>
+  
+	  <li ngbNavItem>
+		<button ngbNavLink>Movimentações</button>
+		<ng-template ngbNavContent>
+	
+			<input
+			  class="form-control mb-4 mt-4"
+			  matInput
+			  (keyup)="applyMovimentsFilter($event)"
+			  placeholder="Filtrar por nome"
+			/>
+
+  			<div class="mat-table-container" style="overflow-x: auto;">
+
+		  <table mat-table [dataSource]="dataSourceMoviments" #movimentsSort matSort class="mb-4">
+			<ng-container matColumnDef="code">
+			  <th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
+			  <td mat-cell *matCellDef="let row">{{ row.code }}</td>
+			</ng-container>
+  
+			<ng-container matColumnDef="name">
+
+			  <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+			</ng-container>
+  
+			<ng-container matColumnDef="unit">
+			  <th mat-header-cell *matHeaderCellDef mat-sort-header>Unidade</th>
+			  <td mat-cell *matCellDef="let row">{{ row.unit }}</td>
+			</ng-container>
+  
+			<ng-container matColumnDef="qtd">
+			  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+				Quantidade
+			  </th>
+			  <td mat-cell *matCellDef="let row">{{ row.qtd }}</td>
+			</ng-container>
+
+			<ng-container matColumnDef="type">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header>
+				  Tipo
+				</th>
+				<td mat-cell *matCellDef="let row">{{ row.type}}</td>
+			  </ng-container>
+	
+
+			<ng-container matColumnDef="createdAt">
+			  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+				Data de Criação
+			  </th>
+			  <td mat-cell *matCellDef="let row">{{ row.createdAt }}</td>
+			</ng-container>
+  
+			<tr mat-header-row *matHeaderRowDef="displayedMovimentColumns"></tr>
+			<tr
+			  mat-row
+			  *matRowDef="let row; columns: displayedMovimentColumns"
+			  (click)="onRowClick(row)"
+			></tr>
+		  </table>
+		  	</div>
+		  <mat-paginator
+			[pageSizeOptions]="[5, 10, 25]"
+			showFirstLastButtons
+			#movimentsPaginator
+		  ></mat-paginator>
+		</ng-template>
+	  </li>
+	</ul>
+	<div [ngbNavOutlet]="nav"></div>
+  </div>
+  

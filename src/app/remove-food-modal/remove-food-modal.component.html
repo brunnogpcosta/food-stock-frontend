@@ -1,0 +1,21 @@
+<div>
+    <div class="modal-header">
+      <h4 class="modal-title">Retirar alimento</h4>
+    </div>
+  
+    <div class="modal-body">
+
+        <div class="form">
+    
+            <div class="form-group">
+              <label for="nome">Quantidade</label>
+              <input type="number" [(ngModel)]="quantity" placeholder="Quantidade" class="form-control"  />
+            </div>
+        </div>
+
+  </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary border-black" (click)="closeModal()">Fechar</button>
+    <button *ngIf="addedItems.length" type="button" class="btn btn-primary border-black" (click)="salvarAlimento()">Salvar</button>
+</div>

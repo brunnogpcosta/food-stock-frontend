@@ -1,0 +1,30 @@
+<section class="banner">
+  <div>
+      <h2 class="title">{{ title }}</h2>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item" *ngFor="let item of breadcrumbItems; let first = first; let last = last">
+            <a *ngIf="first" [routerLink]="item.url">{{ item.label }}</a>
+            <ng-container *ngIf="!first">{{ item.label }}</ng-container>
+          </li>
+        </ol>
+      </nav>
+  </div>
+
+  <div *ngIf="oneButton; else elseBlock" class="mb-2 flex d-flex ">
+    <button type="button" class="btn btn-primary button-right border-black" mdbRipple (click)="openInputRegisterModal()">
+      <mat-icon>vertical_align_bottom</mat-icon>
+      Registrar entrada</button>
+    <button type="button" class="btn btn-danger button-right border-black" mdbRipple (click)="openInputRegisterModal()">
+      <mat-icon>vertical_align_top</mat-icon>
+      Registrar saída</button>
+    <button type="button" class="btn btn-warning button-right border-black" mdbRipple (click)="openAddFoodModal()">
+      <mat-icon>add</mat-icon>
+      Incluir alimento</button>
+  </div>
+  <ng-template #elseBlock>
+    <button type="button" class="btn btn-primary border-black button-right mb-2 " mdbRipple (click)="openIncluirAlimentoModal()">Novo estoque</button>
+  </ng-template>
+  
+  
+</section>

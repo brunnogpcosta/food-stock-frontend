@@ -1,0 +1,40 @@
+<div>
+    <div class="modal-header">
+      <h4 class="modal-title">Registrar Entrada</h4>
+    </div>
+  
+    <div class="modal-body">
+
+        <div class="form">
+       
+
+            <select [(ngModel)]="selectedItem" (change)="onItemChange()" class="form-group p-2 mb-2">
+                <option value="" disabled selected>Selecione um item</option>
+                <option *ngFor="let item of items" [value]="item.name">{{ item.name }}</option>
+            </select>
+
+            <div class="form-group">
+              <label for="nome">Quantidade</label>
+              <input type="number" [(ngModel)]="quantity" placeholder="Quantidade" class="form-control"  />
+            </div>
+
+
+            <button (click)="onAddItem()" class="btn btn-warning button-top border-black ">
+                <mat-icon>add</mat-icon>
+                Adicionar</button>
+        </div>
+
+  
+    <ul class="mt-4">
+      <li *ngFor="let addedItem of addedItems">
+        {{ addedItem.item }} ({{ addedItem.quantity }})
+      </li>
+    </ul>
+
+
+  </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary border-black" (click)="closeModal()">Fechar</button>
+    <button *ngIf="addedItems.length" type="button" class="btn btn-primary border-black" (click)="salvarAlimento()">Salvar</button>
+</div>
