@@ -19,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { InputRegisterModalComponent } from './input-register-modal/input-register-modal.component';
 import { AddFoodModalComponent } from './add-food-modal/add-food-modal.component';
 import { RemoveFoodModalComponent } from './remove-food-modal/remove-food-modal.component';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { RemoveFoodModalComponent } from './remove-food-modal/remove-food-modal.
     MatPaginatorModule,
     MatSortModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    GraphQLModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
