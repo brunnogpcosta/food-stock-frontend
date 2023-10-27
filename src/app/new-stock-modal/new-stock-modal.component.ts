@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Apollo } from 'apollo-angular';
+import { POST_STOCK } from '../graphql.operations';
 
 @Component({
   selector: 'app-new-stock-modal',
@@ -8,20 +10,40 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class NewStockModalComponent {
   nome: string = '';
+  @Output() modalClosed = new EventEmitter<void>();
 
-  constructor(private activeModal: NgbActiveModal) {}
+  constructor(private activeModal: NgbActiveModal, private apollo: Apollo) {}
 
   salvarAlimento() {
-    // Lógica para salvar o alimento
+    const createdAt =  new Date()
+
+    this.apollo
+      .mutate({
+        mutation: POST_STOCK,
+        variables: {
+          nome: this.nome,
+          createdAt: createdAt,
+        }
+      })
+      .subscribe(
+        ({ data }) => {
+          console.log('Estoque criado:', data);
+        },
+        (error) => {
+          console.error('Erro ao criar o estoque:', error);
+        }
+      );
 
     this.activeModal.close();
+    this.modalClosed.emit();
+
 
   }
 
   closeModal() {
-    // Lógica para fechar o modal
+     this.activeModal.dismiss();
+     this.modalClosed.emit();
 
-    this.activeModal.dismiss();
 
   }
 

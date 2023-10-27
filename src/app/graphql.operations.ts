@@ -11,4 +11,19 @@ const GET_STOCKS = gql`
     }
   }
 `
-export { GET_STOCKS }
+
+const POST_STOCK = gql`
+  mutation CreateStock($nome: String!, $createdAt: String!) {
+    createEstoque(createEstoqueInput: {
+      nome: $nome,
+      createdAt: $createdAt
+    }) {
+      id
+      nome
+      createdAt
+    }
+  }
+`;
+
+
+export { GET_STOCKS, POST_STOCK }
