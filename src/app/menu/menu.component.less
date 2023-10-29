@@ -1,21 +1,47 @@
-.banner{
-    background-color: rgb(22, 192, 78);
-    height: 200px;
-    margin: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    position: relative;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #000 ;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.banner {
+  background-color: rgb(22, 192, 78);
+  margin: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 200px;
+}
 
-    .button-right{
-        margin-right: 10px; 
-        display: flex;
-        align-items: center;
-      }
-      
+.banner h2.title {
+  margin: 0; 
+}
+
+
+.banner .button-right {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column; 
+    height: auto; 
+    padding: 10px; 
+    
+
+  .banner .title {
+    text-align: center; 
+  }
+
+  .banner .breadcrumb {
+    text-align: center; 
+    margin-top: 10px; 
+  }
+
+  .banner .button-right {
+    margin: 10px 0;
+  }
+}
 }
