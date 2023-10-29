@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -6,47 +6,30 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './remove-food-modal.component.html',
   styleUrls: ['./remove-food-modal.component.less']
 })
-export class RemoveFoodModalComponent {
+export class RemoveFoodModalComponent implements OnInit {
   selectedItem: string = '';
   quantity: number = 0;
   addedItems: { item: string; quantity: number }[] = [];
-  items: { id: number, name: string, quantity: number }[] = [
-    { id: 1, name: 'Item 1', quantity: 0 },
-    { id: 2, name: 'Item 2', quantity: 0 },
-    { id: 3, name: 'Item 3', quantity: 0 },
-    { id: 4, name: 'Item 4', quantity: 0 },
-  ];
-  
+  items: [] = []
+  maxLength: number = 1;
 
   constructor(private activeModal: NgbActiveModal) {}
 
-  salvarAlimento() {
-    // Lógica para salvar o alimento
 
+  ngOnInit(): void {
+    
+  }
+
+  removeFood() {
     this.activeModal.close();
 
   }
 
   closeModal() {
-    // Lógica para fechar o modal
-
     this.activeModal.dismiss();
 
   }
 
-  onItemChange() {
-    if (this.selectedItem === '') {
-      this.quantity = 0;
-    }
-  }
-
-  onAddItem() {
-    if (this.selectedItem !== '' && this.quantity > 0) {
-      this.addedItems.push({ item: this.selectedItem, quantity: this.quantity });
-      this.selectedItem = '';
-      this.quantity = 0;
-    }
-  }
 
 
 }

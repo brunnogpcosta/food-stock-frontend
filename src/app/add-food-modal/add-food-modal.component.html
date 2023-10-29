@@ -1,40 +1,28 @@
 <div>
-    <div class="modal-header">
-      <h4 class="modal-title">Cadastro de alimento</h4>
-    </div>
-  
-    <div class="modal-body">
+	<div class="modal-header">
+		<h4 class="modal-title">Cadastro de alimento</h4>
+	</div>
 
-        <div class="form">
+	<div class="modal-body">
 
-            <div class="form-group">
-                <label for="nome">Nome do alimento</label>
-                <input type="text" class="form-control mb-2" id="nome" [(ngModel)]="nome" name="nome">
-              </div>
+		<div class="form">
 
-              <label for="nome">Unidade</label>
-              <select [(ngModel)]="selectedItem" (change)="onItemChange()" class="form-group p-2 mb-2">
-                <option value="" disabled selected>Selecione uma unidade</option>
-                <option *ngFor="let item of items" [value]="item.name">{{ item.name }}</option>
-            </select>
+			<div class="form-group">
+				<label for="nome">Nome do alimento</label>
+				<input type="text" class="form-control mb-2" id="nome" [(ngModel)]="nome" name="nome">
+				</div>
 
-
-              <div class="form-group">
-                <label for="nome">Quantidade</label>
-                <input type="number" [(ngModel)]="quantity" placeholder="Quantidade"  class="form-control mb-2"/>
-              </div>
-
-              <div class="form-group">
-                <label for="date">Validade</label>
-                <input type="date" [(ngModel)]="date" class="form-control mb-2" id="date" name="date">
-              </div>
-              
-        </div>
+				<label for="nome">Unidade</label>
+				<select [(ngModel)]="selectedItem" (change)="onItemChange()" class="form-group p-2 mb-2">
+					<option value="" disabled selected>Selecione uma unidade</option>
+					<option *ngFor="let item of items" [value]="item.id">{{ item.nome }}</option>
+			</select>
+		</div>
 
 
-  </div>
-  
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary border-black" (click)="closeModal()">Fechar</button>
-    <button *ngIf="addedItems.length" type="button" class="btn btn-primary border-black" (click)="salvarAlimento()">Salvar</button>
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary border-black" (click)="closeModal()">Fechar</button>
+		<button *ngIf="selectedItem && nome" type="button" class="btn btn-primary border-black" (click)="salvarAlimento()">Salvar</button>
 </div>

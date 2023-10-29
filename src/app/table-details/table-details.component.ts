@@ -57,12 +57,12 @@ export class TableDetailsComponent implements AfterViewInit {
   }
 
   onRowClick(row: any) {
-    console.log('Linha clicada:', row);
+    // console.log('Linha clicada:', row);
   }
 
   onActionClick(row: any) {
     this.openIncluirAlimentoModal()
-    console.log('Ação clicada para a linha:', row);
+    // console.log('Ação clicada para a linha:', row);
   }
 
   openIncluirAlimentoModal() {

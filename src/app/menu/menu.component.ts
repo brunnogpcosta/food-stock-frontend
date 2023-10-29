@@ -70,9 +70,6 @@ export class MenuComponent implements OnInit {
   openAddFoodModal() {
     const modalRef = this.modalService.open(AddFoodModalComponent); 
 
-    modalRef.componentInstance.modalClosed.subscribe(() => {
-      location.reload();
-    });
   }
 
 

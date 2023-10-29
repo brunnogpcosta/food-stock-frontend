@@ -91,7 +91,7 @@
 		<button ngbNavLink>Movimentações</button>
 		<ng-template ngbNavContent>
 	
-			<input
+			<!-- <input
 			  class="form-control mb-4 mt-4"
 			  matInput
 			  (keyup)="applyMovimentsFilter($event)"
@@ -150,7 +150,13 @@
 			[pageSizeOptions]="[5, 10, 25]"
 			showFirstLastButtons
 			#movimentsPaginator
-		  ></mat-paginator>
+		  ></mat-paginator> -->
+
+
+		  <div class="building-container">
+			<p class="building">Em contrução ...</p>
+		  </div>
+	
 		</ng-template>
 	  </li>
 	</ul>

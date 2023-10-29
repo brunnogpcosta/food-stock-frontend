@@ -27,7 +27,6 @@ export class NewStockModalComponent {
       })
       .subscribe(
         ({ data }) => {
-          console.log('Estoque criado:', data);
         },
         (error) => {
           console.error('Erro ao criar o estoque:', error);

@@ -51,4 +51,32 @@ mutation ($expirate: String!, $qtd: Int!, $foodId: Int!, $stockId: Int!) {
 `
 
 
-export { GET_STOCKS, POST_STOCK, GET_FOODS, POST_ENTER }
+const GET_UNITIES = gql`
+{
+  allUnities
+  {
+    id
+    nome
+  }
+}
+
+`;
+
+const POST_FOOD = gql`
+mutation ($nome: String!, $unidadeMedida: String!) {
+  createFood(createAlimentoInput: {
+    nome: $nome,
+    unidadeMedidaId: $unidadeMedida
+  }) {
+    id
+    nome
+  }
+}
+
+`;
+
+
+
+
+
+export { GET_STOCKS, POST_STOCK, GET_FOODS, POST_ENTER, GET_UNITIES, POST_FOOD }
