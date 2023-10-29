@@ -25,5 +25,30 @@ const POST_STOCK = gql`
   }
 `;
 
+const GET_FOODS = gql`
+{
+  allFoods
+  {
+    id
+    nome
+  }
+}
 
-export { GET_STOCKS, POST_STOCK }
+`;
+
+const POST_ENTER = gql`
+mutation ($expirate: String!, $qtd: Int!, $foodId: Int!, $stockId: Int!) {
+  createEntrada(createEntradaInput: {
+    validade: $expirate
+    quantidade: $qtd
+    alimento_id: $foodId
+    estoque_id: $stockId
+  }) {
+    id
+  }
+}
+
+`
+
+
+export { GET_STOCKS, POST_STOCK, GET_FOODS, POST_ENTER }

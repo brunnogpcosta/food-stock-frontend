@@ -73,7 +73,6 @@ fetchStocks() {
   }
 
   onRowClick(itemId: string) {
-    console.log('item: ', itemId);
     this.selectedItemId = itemId;
     this.router.navigate([`/estoque/${itemId}`]);
   }

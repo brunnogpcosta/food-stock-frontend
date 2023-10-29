@@ -8,26 +8,37 @@
         <div class="form">
        
 
-            <select [(ngModel)]="selectedItem" (change)="onItemChange()" class="form-group p-2 mb-2">
-                <option value="" disabled selected>Selecione um item</option>
-                <option *ngFor="let item of items" [value]="item.name">{{ item.name }}</option>
-            </select>
+          <select [(ngModel)]="selectedItem" (change)="onItemChange($event)" class="form-group p-2 mb-2">
+            <option value="" disabled selected>Selecione um item</option>
+            <option *ngFor="let item of items" [value]="item.id">{{ item.id }} - {{ item.nome }}</option>
+          </select>
+          
 
             <div class="form-group">
               <label for="nome">Quantidade</label>
               <input type="number" [(ngModel)]="quantity" placeholder="Quantidade" class="form-control"  />
             </div>
 
+            
+            <div class="form-group mt-2">
+              <label for="date">Validade</label>
+              <input type="date" [(ngModel)]="date" class="form-control mb-2" id="date" name="date">
+            </div>
+            
 
-            <button (click)="onAddItem()" class="btn btn-warning button-top border-black ">
-                <mat-icon>add</mat-icon>
-                Adicionar</button>
+
+            <button (click)="onAddItem()" class="btn btn-warning button-top border-black"
+            [disabled]="!selectedItem || quantity <= 0 || !date">
+        <mat-icon>add</mat-icon>
+        Adicionar
+    </button>
         </div>
 
   
     <ul class="mt-4">
       <li *ngFor="let addedItem of addedItems">
-        {{ addedItem.item }} ({{ addedItem.quantity }})
+     
+        {{ addedItem.item}} ({{ addedItem.quantity }}) - {{ addedItem.date}}
       </li>
     </ul>
 

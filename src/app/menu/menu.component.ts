@@ -61,10 +61,18 @@ export class MenuComponent implements OnInit {
 
   openInputRegisterModal() {
     const modalRef = this.modalService.open(InputRegisterModalComponent); 
+
+    modalRef.componentInstance.modalClosed.subscribe(() => {
+      location.reload();
+    });
   }
 
   openAddFoodModal() {
     const modalRef = this.modalService.open(AddFoodModalComponent); 
+
+    modalRef.componentInstance.modalClosed.subscribe(() => {
+      location.reload();
+    });
   }
 
 
