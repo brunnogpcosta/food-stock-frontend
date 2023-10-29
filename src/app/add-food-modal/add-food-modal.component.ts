@@ -35,7 +35,6 @@ ngOnInit(): void {
           if (error) {
             console.error('Erro na consulta:', error);
           } else {
-            console.log(data)
             this.items = data.allUnities
           }
         },

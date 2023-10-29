@@ -14,7 +14,7 @@ export class NewStockModalComponent {
 
   constructor(private activeModal: NgbActiveModal, private apollo: Apollo) {}
 
-  salvarAlimento() {
+  saveStock() {
     const createdAt =  new Date()
 
     this.apollo
@@ -27,6 +27,7 @@ export class NewStockModalComponent {
       })
       .subscribe(
         ({ data }) => {
+          // console.log('Data: ', data)
         },
         (error) => {
           console.error('Erro ao criar o estoque:', error);
@@ -41,9 +42,6 @@ export class NewStockModalComponent {
 
   closeModal() {
      this.activeModal.dismiss();
-     this.modalClosed.emit();
-
-
   }
 
 

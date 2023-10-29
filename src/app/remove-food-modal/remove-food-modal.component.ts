@@ -27,7 +27,6 @@ export class RemoveFoodModalComponent implements OnInit {
 
   closeModal() {
     this.activeModal.dismiss();
-
   }
 
 
